@@ -1,0 +1,10 @@
+C:\source\codeworks\week-10\gulchvalley\obj\Debug\netcoreapp2.0\gulchvalley.csproj.CoreCompileInputs.cache
+C:\source\codeworks\week-10\gulchvalley\obj\Debug\netcoreapp2.0\gulchvalley.AssemblyInfoInputs.cache
+C:\source\codeworks\week-10\gulchvalley\obj\Debug\netcoreapp2.0\gulchvalley.AssemblyInfo.cs
+C:\source\codeworks\week-10\gulchvalley\bin\Debug\netcoreapp2.0\gulchvalley.deps.json
+C:\source\codeworks\week-10\gulchvalley\bin\Debug\netcoreapp2.0\gulchvalley.runtimeconfig.json
+C:\source\codeworks\week-10\gulchvalley\bin\Debug\netcoreapp2.0\gulchvalley.runtimeconfig.dev.json
+C:\source\codeworks\week-10\gulchvalley\bin\Debug\netcoreapp2.0\gulchvalley.dll
+C:\source\codeworks\week-10\gulchvalley\bin\Debug\netcoreapp2.0\gulchvalley.pdb
+C:\source\codeworks\week-10\gulchvalley\obj\Debug\netcoreapp2.0\gulchvalley.dll
+C:\source\codeworks\week-10\gulchvalley\obj\Debug\netcoreapp2.0\gulchvalley.pdb
