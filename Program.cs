@@ -7,9 +7,9 @@ namespace gulchvalley
         static void Main(string[] args)
         {
 
-            // Project.Game game = new Project.Game();
-            // MyGame.Setup();
-            // MyGame.Play();
+            Project.Game game = new Project.Game();
+            //MyGame.Setup();
+            //MyGame.Play();
 
             // Game Loop Stuff
 

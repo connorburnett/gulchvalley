@@ -4,7 +4,7 @@ namespace gulchvalley.Project
 {
     public interface IPlayer
     {
-        int Score { get; set; }
+        int Health { get; set; }
         List<Item> Inventory { get; set; }
 
     }

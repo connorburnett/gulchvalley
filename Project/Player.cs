@@ -1,17 +1,19 @@
+using System;
 using System.Collections.Generic;
 
 namespace gulchvalley.Project
 {
     public class Player : IPlayer
     {
-        public int Score { get; set; }
+        public string CharName;
+        public int Health { get; set; }
         public List<Item> Inventory { get; set; }
 
-        public Player(int score, Item item)
+
+        public Player(Item item)
         {
-            Score = score;
-            Item.Add(item);
-            Item.Remove(item);
+            Health = 100;
+            Inventory = new List<Item>();
         }
     }
 }

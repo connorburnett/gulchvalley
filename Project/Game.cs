@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace gulchvalley.Project
@@ -5,7 +6,8 @@ namespace gulchvalley.Project
     public class Game : IGame
     {
 
-        public Room CurrentRoom { get; private set; }
+        public Room CurrentRoom { get; set; }
+        
         Room IGame.CurrentRoom { get; set; }
         Player IGame.CurrentPlayer { get; set; }
 
@@ -20,10 +22,16 @@ namespace gulchvalley.Project
         void IGame.Setup()
         {
             // Build rooms
-            Room town = new Room("Town Square", "The center of the action");
-            Room saloon = new Room("The Saloon", "Hey pardner, ya want some whiskey?");
-            Room hotel = new Room("The Hotel", "Get some rest.");
-            Room jail = new Room("The Jail", "Lock em up!");
+            Room town = new Room("Town Square", "The small, central square of Gulch Valley, where folks congregate... and where duels are oft fought.");
+            Room saloon = new Room("The Saloon", "A place where a feller can socialize, have a drink, and start a rowdy bar fight.");
+            Room hotel = new Room("The Hotel", "The type of place where an out-of-towner can get a good night's sleep, for a small price.");
+            Room jail = new Room("The Jail", "Where all of Gulch Valley's worst criminals are held - well, except ol' Slim Pete, who no one can seem to lock up.");
+            
+            Rooms.Add(town);
+            Rooms.Add(saloon);
+            Rooms.Add(hotel);
+            Rooms.Add(jail);
+            
             // Establish relationships
             town.Exits.Add("To Saloon", saloon);
             town.Exits.Add("To Hotel", hotel);
@@ -32,6 +40,10 @@ namespace gulchvalley.Project
             hotel.Exits.Add("To Town Square", town);
             jail.Exits.Add("To Town Square", town);
         
+            // Items
+
+
+
             CurrentRoom = town;
         
         }
@@ -43,6 +55,14 @@ namespace gulchvalley.Project
 
         void IGame.UseItem(string itemName)
         {
+        }
+    }
+
+    internal class Rooms
+    {
+        internal static void Add(Room town)
+        {
+            throw new NotImplementedException();
         }
     }
 }

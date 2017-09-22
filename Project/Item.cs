@@ -5,19 +5,13 @@ namespace gulchvalley.Project
 {
     public class Item : IItem
     {
-        public Item()
-        {
-        }
 
-        string IItem.Name { get; set; }
-        string IItem.Description { get; set; }
-
-        internal static void Add(Item item)
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public Item(string name, string description)
         {
-        }
-
-        internal static void Remove(Item item)
-        {
+            Name = name;
+            Description = description;
         }
     }
 }
