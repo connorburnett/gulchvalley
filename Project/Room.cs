@@ -8,7 +8,6 @@ namespace gulchvalley.Project
         public string Name { get; set; }
         public string Description { get; set; }
         public List<Item> Items { get; set; }
-        //public object Exits { get; internal set; }
         public Dictionary<string, Room> Exits = new Dictionary<string, Room>();
 
         public Room(string name, string description)
@@ -17,6 +16,11 @@ namespace gulchvalley.Project
             Description = description;
             Items = new List<Item>();
             Exits = new Dictionary<string, Room>();
+        }
+
+        public void Doors(string doors, Room room)
+        {
+            Exits.Add(doors, room);
         }
 
         public void UseItem(Item item)
