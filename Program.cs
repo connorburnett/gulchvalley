@@ -8,15 +8,19 @@ namespace gulchvalley
         {
 
             Project.Game game = new Project.Game();
+            game.Playing = true;
 
-            game.Setup();
-            game.BuildRooms();
+            game.Intro();
+            game.BuildGame();
             game.Square1();
             
             // Game Loop Stuff
 
             while (game.Playing)
             {
+                
+
+                //string choiceMech = game.
 
                 System.Console.WriteLine("Would you like to begin another game?...");
                 string Continue = Console.ReadLine();

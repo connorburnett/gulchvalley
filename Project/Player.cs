@@ -23,5 +23,13 @@ namespace gulchvalley.Project
                 System.Console.WriteLine($"Carmichael: Well, {CharName}, I'm Joe Carmichael, Sheriff of this town.");
                 return CharName;
         }
+
+        public void UserItems(Player player)
+        {
+            for (int i = 0; i < player.Inventory.Count; i++)
+            {
+                System.Console.WriteLine($"{player.Inventory[i].Name}");
+            }
+        }
     }
 }

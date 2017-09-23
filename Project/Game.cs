@@ -14,11 +14,12 @@ namespace gulchvalley.Project
         public bool hotelBool = false;
         public bool jailBool = false;
 
-        public void Setup()
+        public void Intro()
         {
-            Playing = true;
             Console.Clear();
-            System.Console.WriteLine("The year is 1899. You are a wanderer, as well as a champion of the old west who has conquered many challenges.");
+            System.Console.WriteLine("The year is 1899. You are a wanderer - a champion of the old west.");
+            Console.ReadLine();
+            System.Console.WriteLine("You have faced many foes and conquered many challenges.");
             Console.ReadLine();
 
             System.Console.WriteLine("You have wandered into a small settlement in the middle of the desert with a population of barely 100.");
@@ -56,12 +57,19 @@ namespace gulchvalley.Project
             Rooms = new List<Room>();
         }
 
+        public string UserChoice()
+        {
+            System.Console.WriteLine("What do you want to do now? Where do you want to go? Press M for Menu.");
+            string choice0 = Console.ReadLine();
+            return choice0;
+        }
+
         public void Square1()
         {
             Console.Clear();
             System.Console.WriteLine("So, you've found yourself in the town square of Gulch Valley, on a mission to take a criminal down.");
             System.Console.WriteLine("Choose where you'd like to go. To see your options, press M for Menu.");
-            System.Console.WriteLine("Press A for the Saloon, B for the Hotel, or C for the jail.");
+            System.Console.WriteLine("A: Saloon // B: Hotel // C: Jail");
             string choice2 = Console.ReadLine().ToUpper();
             if (choice2 == "A")
             {
@@ -69,25 +77,148 @@ namespace gulchvalley.Project
             }
             else if (choice2 == "B")
             {
-
+                HotelEncounter();
             }
             else if (choice2 == "C")
             {
-
+                JailEncounter();
+            }
+            //CurrentRoom = CurrentRoom.Exits[choice2];
+        }
+        public void Square2()
+        {
+            Console.Clear();
+            System.Console.WriteLine("You find yourself back in the town square of Gulch Valley.");
+            System.Console.WriteLine("Choose where you'd like to go. To see your options, press M for Menu.");
+            System.Console.WriteLine("A: Saloon // B: Hotel // C: Jail");
+            string choice2 = Console.ReadLine().ToUpper();
+            if (choice2 == "A")
+            {
+                Saloon();
+            }
+            else if (choice2 == "B")
+            {
+                Hotel();
+            }
+            else if (choice2 == "C")
+            {
+                Jail();
             }
             //CurrentRoom = CurrentRoom.Exits[choice2];
         }
 
         public void Saloon()
         {
-            if(saloonBool)
+            if (saloonBool)
             {
                 SaloonEncounter();
-            } else {
-                Console.WriteLine("You already did this");
+            }
+            else
+            {
+                System.Console.WriteLine("You again arrive at the saloon - you take in your surroundings but are feeling unparticipatory.");
+                System.Console.WriteLine("A: Leave");
+                string choice = Console.ReadLine().ToUpper();
+                if (choice == "A")
+                {
+                    Square2();
+                }
             }
         }
         public void SaloonEncounter()
+        {
+            System.Console.WriteLine("You swing open the doors to the saloon and find yourself in a rowdy, but fun, environment.");
+            System.Console.WriteLine("You go over to the bar to order a drink.");
+            Console.ReadLine();
+            System.Console.WriteLine("Bartender: What'll ya have, stranger?");
+            System.Console.WriteLine("A. Whiskey // B. Moonshine // C. Black Tar Liquor");
+            string choice3 = Console.ReadLine().ToUpper();
+            if (choice3 == "A")
+            {
+                System.Console.WriteLine("Bartender: Here y'ar, friend, don't drink it down too fast, ya hear?");
+                System.Console.WriteLine("You drink it down, unfazed by its alcoholic content.");
+                Console.ReadLine();
+            }
+            else if (choice3 == "B")
+            {
+                System.Console.WriteLine("Bartender: There y'ar friend, impor-ta-ted outta the forests 'a southern Tennessee....");
+                System.Console.WriteLine("You drink it down, unfazed by its alcoholic content.");
+                Console.ReadLine();
+            }
+            else if (choice3 == "C")
+            {
+                System.Console.WriteLine("Bartender: Now, this is a bit of an experimental drink, sir. Drink with prejudice.");
+                Console.ReadLine();
+                System.Console.WriteLine("All of the sudden you feel an ache in your stomach. Your head is swirling. What was in that drink?... *THUMP*");
+                System.Console.WriteLine("You fall to the ground - dead.");
+                System.Console.WriteLine("GAME OVER");
+                string Continue = Console.ReadLine();
+                Reset();
+            }
+            System.Console.WriteLine("All the sudden, you see a familiar figure...");
+            System.Console.WriteLine("Hey, that guy looks a lot like... wait -");
+            Console.ReadLine();
+            System.Console.WriteLine("...It's Slim Pete!");
+            Console.ReadLine();
+            System.Console.WriteLine("You approach him.");
+            Console.ReadLine();
+            Console.Clear();
+            System.Console.WriteLine("Slim Pete: Hey there pardner, back on up, this is my saloon.");
+            Console.ReadLine();
+            System.Console.WriteLine("You respond with fearlessness.");
+            System.Console.WriteLine("Slim Pete: What the what?! You think you can best me, ya wranglin' varmit? Not a chance.");
+            System.Console.WriteLine("Listen - I would pop a cap in your little face right now - but I don't need folks makin' a rucus.");
+            Console.ReadLine();
+            System.Console.WriteLine("Slim Pete: How'sa 'bout we take this out to the square. You and me, a duel to the death, 12 noon tomorra. How's that sound, little man?");
+            System.Console.WriteLine("A. You're on. // B. Not a chance. You're under arrest.");
+            string choice4 = Console.ReadLine().ToUpper();
+            if (choice4 == "A")
+            {
+                System.Console.WriteLine("Slim Pete: Glad to hear ya got yerself a spine. Too bad I'm gonna send ya back to the hole where ya came from.");
+                Console.ReadLine();
+            }
+            else if (choice4 == "B")
+            {
+                System.Console.WriteLine("Before you can even make a move, Slim Pete whips out his six shooter and you hear a loud noise. *BANG*");
+                System.Console.WriteLine("Slim Pete has shot you dead.");
+                System.Console.WriteLine("GAME OVER");
+                string Continue = Console.ReadLine();
+                Reset();
+            }
+            System.Console.WriteLine("Slim Pete flees the scene. You remain in the saloon, processing the events that have just occured.");
+            System.Console.WriteLine("A. Leave the saloon");
+            string choice5 = Console.ReadLine().ToUpper();
+            if (choice5 == "A")
+            {
+                Square2();
+            }
+        }
+        public void Hotel()
+        {
+            if (hotelBool)
+            {
+                HotelEncounter();
+            }
+            else
+            {
+                Console.WriteLine("You have");
+            }
+        }
+        public void HotelEncounter()
+        {
+
+        }
+        public void Jail()
+        {
+            if (jailBool)
+            {
+                JailEncounter();
+            }
+            else
+            {
+                Console.WriteLine("Ya already dag-gum dun digery doo did this!!");
+            }
+        }
+        public void JailEncounter()
         {
 
         }
@@ -95,8 +226,14 @@ namespace gulchvalley.Project
         public void Reset()
         {
             Playing = true;
-            Setup();
+            Intro();
             BuildGame();
+        }
+
+        public void EachRoom(Room room)
+        {
+            System.Console.WriteLine($"{room.Name}");
+            System.Console.WriteLine($"{room.Description}");
         }
 
         public void BuildGame()
@@ -115,12 +252,12 @@ namespace gulchvalley.Project
 
             // Establish relationships
 
-            town.Doors("A", saloon);
-            town.Doors("B", hotel);
-            town.Doors("C", jail);
-            saloon.Doors("Square", town);
-            hotel.Doors("Square", town);
-            jail.Doors("Square", town);
+            town.Doors("1", saloon);
+            town.Doors("2", hotel);
+            town.Doors("3", jail);
+            saloon.Doors("4", town);
+            hotel.Doors("4", town);
+            jail.Doors("4", town);
 
             CurrentRoom = town;
 
@@ -130,7 +267,6 @@ namespace gulchvalley.Project
             hotel.Items.Add(sixShooter);
             Item bulletproofVest = new Item("Bulletproof Vest", "A metal shielding item, for your protection.");
             jail.Items.Add(bulletproofVest);
-            
 
         }
 
@@ -139,12 +275,26 @@ namespace gulchvalley.Project
             CurrentRoom = CurrentRoom.Exits[direction];
         }
 
-        public void UseItem(string itemName)
+        // public void UseItem(string itemName)
+        // {
+        //     string sixShooter = "Gun";
+
+        //     Item item = CurrentPlayer.Inventory.Find(Item => Item.Name.ToLower() == itemName);
+        //     if (item != null && item.Name.ToLower() == sixShooter)
+        //     {
+
+        //     }
+        // }
+
+        public void TakeItem(string itemName)
         {
-
+            Item item = CurrentRoom.Items.Find(Item => Item.Name.ToLower() == itemName);
+            if (item != null)
+            {
+                CurrentRoom.Items.Remove(item);
+                CurrentPlayer.Inventory.Add(item);
+                CurrentPlayer.UserItems(CurrentPlayer);
+            }
         }
-
-
     }
-
 }
