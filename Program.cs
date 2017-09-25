@@ -4,7 +4,7 @@ using gulchvalley.Project;
 
 namespace gulchvalley
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -14,42 +14,69 @@ namespace gulchvalley
 
             game.Intro();
             game.BuildGame();
-            game.Square1();
-            
+            game.EachRoom(game.CurrentRoom);
+            //game.Square1();
+
             // Game Loop Stuff
 
             while (game.Playing)
             {
 
                 string options = game.UserChoice().ToLower();
-                string[] key = options.Split(' ');
+                string[] keyAct = options.Split(' ');
                 Room nextRoom;
-                game.CurrentRoom.Exits.TryGetValue(key[0], out nextRoom);
+                game.CurrentRoom.Exits.TryGetValue(keyAct[0], out nextRoom);
 
-                if(key[0] == "R")
+                if (keyAct[0] == "r")
                 {
                     System.Console.WriteLine("\n");
                     game.EachRoom(game.CurrentRoom);
                 }
-                else if(key[0] == "0")
+                else if (keyAct[0] == "0")
                 {
                     game.Help();
                 }
-                else if(key[0] == "U")
+                else if (keyAct[0] == "ti" && keyAct[1] != null)
                 {
-                    game.TakeItem(key[1]);
+                    if (keyAct[2] != null)
+                        {
+                            var itemName = keyAct[1] + ' ' + keyAct[2];
+                            game.TakeItem(itemName);
+                        }
+                    game.TakeItem(keyAct[1]);
+                }
+                else if (keyAct[0] == "ui")
+                {
+                    if (keyAct[2] != null)
+                    {
+                        var itemName = keyAct[1] + ' ' + keyAct[2];
+                        game.UseItem(itemName);
+                    }
+                    game.UseItem(keyAct[1]);
+                }
+                else if (keyAct[0] == "q")
+                {
+                    game.Playing = game.Quit(game.Playing);
+                }
+                else if (keyAct[0] == "i")
+                {
+                    game.CurrentPlayer.UserItems(game.CurrentPlayer);
+                }
+                else if (keyAct[0] == "s" || keyAct[0] == "j" || keyAct[0] == "h" || keyAct[0] == "t")
+                {
+                    game.changeRoom(options);
+                }
+                else
+                {
+                    System.Console.WriteLine("Invalid key.");
                 }
 
-
-
-                //string choiceMech = game.
-
-                System.Console.WriteLine("Would you like to begin another game?...");
-                string Continue = Console.ReadLine();
-                if (Continue.ToUpper() == "NO")
-                {
-                    game.Playing = false;
-                }
+            }
+            System.Console.WriteLine("Would you like to begin another game?...");
+            string Continue = Console.ReadLine();
+            if (Continue.ToUpper() == "NO")
+            {
+                game.Playing = false;
             }
 
         }
