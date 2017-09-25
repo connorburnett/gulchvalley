@@ -9,10 +9,10 @@ namespace gulchvalley.Project
         public Room CurrentRoom { get; set; }
         public List<Room> Rooms { get; set; }
         public Player CurrentPlayer { get; set; }
-        public bool saloonBool = false;
-        public bool squareBool = false;
-        public bool hotelBool = false;
-        public bool jailBool = false;
+        public bool saloonBool = true;
+        public bool squareBool = true;
+        public bool hotelBool = true;
+        public bool jailBool = true;
 
         public void Intro()
         {
@@ -52,6 +52,9 @@ namespace gulchvalley.Project
                 Console.ReadLine();
                 System.Console.WriteLine("...Then take ol' Slim Pete down.");
                 Console.ReadLine();
+                Console.Clear();
+                Help();
+                Console.ReadLine();
             }
 
             Rooms = new List<Room>();
@@ -59,7 +62,7 @@ namespace gulchvalley.Project
 
         public string UserChoice()
         {
-            System.Console.WriteLine("What do you want to do now? Where do you want to go? Press M for Menu.");
+            //System.Console.WriteLine("Where ");
             string choice0 = Console.ReadLine();
             return choice0;
         }
@@ -68,18 +71,19 @@ namespace gulchvalley.Project
         {
             Console.Clear();
             System.Console.WriteLine("So, you've found yourself in the town square of Gulch Valley, on a mission to take a criminal down.");
-            System.Console.WriteLine("Choose where you'd like to go. To see your options, press M for Menu.");
-            System.Console.WriteLine("A: Saloon // B: Hotel // C: Jail");
+            System.Console.WriteLine("Choose where you'd like to go. To see your options, press 0 for Help.");
+            //System.Console.WriteLine("A: Saloon // B: Hotel // C: Jail");
+            //UserChoice();
             string choice2 = Console.ReadLine().ToUpper();
-            if (choice2 == "A")
+            if (choice2 == "S")
             {
                 Saloon();
             }
-            else if (choice2 == "B")
+            else if (choice2 == "H")
             {
                 HotelEncounter();
             }
-            else if (choice2 == "C")
+            else if (choice2 == "J")
             {
                 JailEncounter();
             }
@@ -92,15 +96,15 @@ namespace gulchvalley.Project
             System.Console.WriteLine("Choose where you'd like to go. To see your options, press M for Menu.");
             System.Console.WriteLine("A: Saloon // B: Hotel // C: Jail");
             string choice2 = Console.ReadLine().ToUpper();
-            if (choice2 == "A")
+            if (choice2 == "S")
             {
                 Saloon();
             }
-            else if (choice2 == "B")
+            else if (choice2 == "H")
             {
                 Hotel();
             }
-            else if (choice2 == "C")
+            else if (choice2 == "J")
             {
                 Jail();
             }
@@ -236,6 +240,18 @@ namespace gulchvalley.Project
             System.Console.WriteLine($"{room.Description}");
         }
 
+        public void Help()
+        {
+            System.Console.WriteLine("Press R to view your current room.");
+            System.Console.WriteLine("Press 0 for help. (Even though you're already here...)");
+            System.Console.WriteLine("Press I for inventory.");
+            System.Console.WriteLine("Press T to go to the Town Square.");
+            System.Console.WriteLine("Press S to go to the Saloon.");
+            System.Console.WriteLine("Press H to go to the Hotel.");
+            System.Console.WriteLine("Press J to go to the Jail.");
+            System.Console.WriteLine("Press U to take item.");
+        }
+
         public void BuildGame()
         {
             // Build rooms
@@ -252,12 +268,12 @@ namespace gulchvalley.Project
 
             // Establish relationships
 
-            town.Doors("1", saloon);
-            town.Doors("2", hotel);
-            town.Doors("3", jail);
-            saloon.Doors("4", town);
-            hotel.Doors("4", town);
-            jail.Doors("4", town);
+            town.Doors("S", saloon);
+            town.Doors("H", hotel);
+            town.Doors("J", jail);
+            saloon.Doors("T", town);
+            hotel.Doors("T", town);
+            jail.Doors("T", town);
 
             CurrentRoom = town;
 

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using gulchvalley.Project;
 
 namespace gulchvalley
 {
@@ -18,7 +20,27 @@ namespace gulchvalley
 
             while (game.Playing)
             {
-                
+
+                string options = game.UserChoice().ToLower();
+                string[] key = options.Split(' ');
+                Room nextRoom;
+                game.CurrentRoom.Exits.TryGetValue(key[0], out nextRoom);
+
+                if(key[0] == "R")
+                {
+                    System.Console.WriteLine("\n");
+                    game.EachRoom(game.CurrentRoom);
+                }
+                else if(key[0] == "0")
+                {
+                    game.Help();
+                }
+                else if(key[0] == "U")
+                {
+                    game.TakeItem(key[1]);
+                }
+
+
 
                 //string choiceMech = game.
 
